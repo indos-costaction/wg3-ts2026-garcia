@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use these materials, please cite them as below."
+title: "INDoS WG3 Training School 2026: reproducible environments and critical reading materials"
+abstract: >-
+  Teaching materials on containerised analysis environments and on how to read
+  and review a neuroimaging paper, prepared for the Training School of Working
+  Group 3 of the INDoS COST Action (CA24161), Madrid, 30 September to
+  2 October 2026.
+type: dataset
+authors:
+  - family-names: "Garcia"
+    given-names: "Mélanie"
+    affiliation: "Trinity College Dublin, Ireland"
+    orcid: "https://orcid.org/XXXX-XXXX-XXXX-XXXX"
+license: CC-BY-4.0
+repository-code: "https://github.com/indos-costaction/wg3-ts2026-garcia"
+url: "https://www.indos-costaction.eu/training"
+keywords:
+  - neuroimaging
+  - reproducibility
+  - containers
+  - Neurodesk
+  - peer review
+  - training materials
+  - COST Action CA24161
+version: 1.0.0
+date-released: "2026-09-29"
