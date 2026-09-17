@@ -10,7 +10,7 @@ type: dataset
 authors:
   - family-names: "Garcia"
     given-names: "Mélanie"
-    affiliation: "Trinity College Dublin, Ireland"
+    affiliation: "Massachusetts General Hospital, Harvard Medical School, Boston, USA"
     orcid: "https://orcid.org/XXXX-XXXX-XXXX-XXXX"
 license: CC-BY-4.0
 repository-code: "https://github.com/indos-costaction/wg3-ts2026-garcia"
