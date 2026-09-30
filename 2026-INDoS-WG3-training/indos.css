@@ -1,0 +1,240 @@
+/* INDoS theme for remark-engine
+ *
+ * Load after ../remark/core/base.css. Colours are sampled from the INDoS logo:
+ * the navy wordmark carries the deck; the four pieces of the brain mark are
+ * used as an identity strip and to colour-code WG3's task forces.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap");
+
+:root {
+  --indos-navy: #102b62;
+  --indos-magenta: #be5eac;
+  --indos-purple: #5d2890;
+  --indos-teal: #60c0af;
+  --indos-orange: #fab44c;
+
+  --accent: var(--indos-navy);
+  --accent-dim: #102b6220;
+  --accent-dark: #1d4a9e;          /* links: a touch lighter than the navy text */
+  --heading-color: var(--indos-navy);
+  --question: #2f8f80;             /* the logo teal, darkened for legibility */
+
+  --logo-aspect: 877 / 693;
+  --logo-width: 58px;
+  --logo-opacity: 1;
+  --logo-offset-x: 28px;
+  --logo-offset-y: 22px;
+
+  /* four equal segments, in the order the pieces wrap around the mark */
+  --indos-strip: linear-gradient(to right,
+      var(--indos-magenta) 0 25%, var(--indos-orange) 25% 50%,
+      var(--indos-teal) 50% 75%, var(--indos-purple) 75% 100%);
+}
+
+/* Headings take the wordmark's geometric sans */
+.remark-slide-content h1,
+.remark-slide-content h2,
+.remark-slide-content h3,
+.indos-title,
+.section-mark {
+  font-family: "Montserrat", "Urbanist", Helvetica, sans-serif;
+  letter-spacing: -0.01em;
+}
+.remark-slide-content h1 { font-weight: 700; }
+.remark-slide-content h2,
+.remark-slide-content h3 { font-weight: 600; }
+
+/* The rail wears the identity strip at its head. (Not its foot: the rotated
+   text starts at the bottom, with the licence badge, and the strip hid both.)
+   Keep the sidebar text short enough to stay below it. */
+.perma-sidebar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 96px;
+  background: linear-gradient(to bottom,
+      var(--indos-magenta) 0 25%, var(--indos-orange) 25% 50%,
+      var(--indos-teal) 50% 75%, var(--indos-purple) 75% 100%);
+}
+
+/* ---- Title slide -------------------------------------------------------- */
+.remark-slide-content.indos-cover {
+  background: #fff;
+}
+.indos-cover .indos-title {
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.indos-cover .indos-title img.wordmark {
+  width: 58%;
+  display: block;
+  margin-bottom: 1.6em;
+}
+.indos-cover .indos-title h1 {
+  font-size: 2.5em;
+  margin: 0 0 0.15em;
+  line-height: 1.1;
+}
+.indos-cover .indos-title h2 {
+  font-size: 1.35em;
+  font-weight: 500;
+  color: var(--indos-purple);
+  margin: 0 0 1.4em;
+}
+.indos-cover .indos-title p { margin: 0.15em 0; }
+.indos-cover .indos-title .meta { color: #555; }
+.indos-cover::before,
+.indos-section::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 12px;
+  background: var(--indos-strip);
+}
+
+/* ---- Section divider: navy field, mark, white type ---------------------- */
+.remark-slide-content.indos-section {
+  background: var(--indos-navy);
+  color: #fff;
+  --heading-color: #fff;
+  --accent-dark: #fff;
+}
+.indos-section .section-mark {
+  text-align: left;
+  left: 12%;
+  width: 76%;
+}
+.indos-section .section-mark img {
+  width: 150px;
+  display: block;
+  margin-bottom: 1.2em;
+}
+.indos-section .section-mark > h1 {
+  font-size: 2.6em;
+  color: #fff;
+  margin: 0 0 0.3em;
+  line-height: 1.1;
+}
+.indos-section .section-mark p {
+  font-size: 1.15em;
+  color: #c9d3ea;
+  max-width: 34em;
+}
+
+/* ---- Task-force colour coding (TF1 orange, TF2 teal, TF3 purple) --------- */
+.cards .card.tf1 { border-top-color: var(--indos-orange); }
+.cards .card.tf2 { border-top-color: var(--indos-teal); }
+.cards .card.tf3 { border-top-color: var(--indos-purple); }
+.cards .card.jc  { border-top-color: var(--indos-magenta); }
+.cards.cols-1 .card.jc { border-left-color: var(--indos-magenta); }
+.cards .card.tf1 h3 { color: #b8740d; }
+.cards .card.tf2 h3 { color: #2f8f80; }
+.cards .card.tf3 h3 { color: var(--indos-purple); }
+.cards .card.jc  h3 { color: #9c3d8b; }
+
+/* Muted cards: WGs other than WG3 on the overview slide */
+.cards .card.muted { border-top-color: #cfd5e2; color: #777; }
+.cards .card.muted h3 { color: #8a93a8; }
+
+.navy { color: var(--indos-navy); }
+.fine { font-size: 70%; color: #666; }
+.indos-section .section-mark .fine { color: #aebbd8; font-size: 0.72em; margin-top: 3em; text-align: left; }
+
+/* Corner mark. Set directly rather than through --logo-url: Chrome resolves a
+   url() held in a custom property against the stylesheet that *uses* it
+   (remark/core/base.css), so a relative path there would point into remark/. */
+.remark-slide-content::after {
+  background-image: url("images/indos-mark.png");
+}
+.indos-section .section-mark .fine p { text-align: left; text-align-last: left; }
+
+/* ---- Federated Journal Club additions ------------------------------------ */
+
+/* The four guiding questions: one brand colour each, in logo order */
+.cards .card.q1 { border-top-color: var(--indos-magenta); }
+.cards .card.q2 { border-top-color: var(--indos-orange); }
+.cards .card.q3 { border-top-color: var(--indos-teal); }
+.cards .card.q4 { border-top-color: var(--indos-purple); }
+.cards .card.q1 h3 { color: #9c3d8b; }
+.cards .card.q2 h3 { color: #b8740d; }
+.cards .card.q3 h3 { color: #2f8f80; }
+.cards .card.q4 h3 { color: var(--indos-purple); }
+.questions .card h3 { font-size: 1.55em; line-height: 1.25; }
+.cards.questions { margin-top: 1.4em; }
+.cards.questions .card { min-height: 6.5em; }
+.questions .card p { color: #555; }
+
+/* Agenda rows: duration instead of a step number */
+.cards.steps .card .enum.dur {
+  font-size: 1.15em;
+  font-weight: 700;
+  white-space: nowrap;
+  text-align: left;
+}
+.cards.steps .card > *:has(> .enum.dur) { flex: 0 0 4.2em; }
+.cards.steps .card.break { background: #f5f6f9; border-left-color: #cfd5e2; color: #777; }
+.cards.steps .card.break .enum { color: #8a93a8; }
+.cards.steps.agenda { gap: 7px; }
+
+/* Big one-liners for the opening */
+.statement { font-family: "Montserrat", "Urbanist", Helvetica, sans-serif; font-weight: 700;
+  color: var(--indos-navy); font-size: 2.1em; line-height: 1.25; }
+.statement.turn { color: var(--indos-purple); }
+
+/* Apple vs concept graph */
+.apple { font-size: 150px; line-height: 1; margin: 0.1em 0 0.2em; }
+.figcap { color: #555; font-size: 1.05em; }
+
+.fedsvg { width: 100%; max-width: 980px; display: block; margin: 0.4em auto 0; }
+.ref { font-size: 0.72em; color: #666; }
+
+.remark-slide-content .boxed-content.larger { font-size: 1.2em; }
+.remark-slide-content.vcenter > .statement { margin-top: 0.4em; margin-bottom: 0.4em; }
+.indos-section em { color: inherit; }
+.statement { margin: 0.9em 0 0; }
+
+/* Incremental 2x2 reveal: cards stay in place, later ones are invisible */
+.cards .card.hide { visibility: hidden; }
+.cards.questions.cols-2 .card { min-height: 5.2em; justify-content: center; }
+.cards.questions.cols-2 .card h3 { font-size: 1.7em; }
+.cards.questions.cols-2 { gap: 18px; margin-top: 0.8em; }
+
+/* About me timeline */
+.cards.story .card .kicker { color: var(--indos-purple); font-weight: 600; }
+
+/* Hidden but still taking up space, so a later build doesn't shift the layout */
+.remark-slide-content .invisible { visibility: hidden; }
+
+.remark-slide-content div.huge-statement { font-size: 5em; margin: 2.7em 0 0; text-align: center; display: block; width: 100%; }
+.pull-left .cards.steps { margin-top: 1.2em; }
+.pull-left .cards.steps .card { font-size: 1.1em; }
+
+/* QR code + link for the reading guide */
+svg.qr { width: 62%; max-width: 280px; display: block; margin: 0.4em auto 0.8em; }
+.qr-link { font-size: 0.78em; }
+
+/* Review tips beside the 55' instructions */
+.cards.cols-1.review { gap: 8px; }
+.cards.cols-1.review .card { padding-top: 0.5em; padding-bottom: 0.5em; }
+.pull-right .admonition { margin-top: 0.8em; }
+
+.cards.steps.webapp .card { font-size: 1.5em; }
+.cards.steps.webapp { margin-top: 2.5em; flex: 0 0 auto; }
+.cards.steps.webapp .card { flex: 0 0 auto; padding-top: 0.6em; padding-bottom: 0.6em; }
+
+/* Reading-guide activity: wider step column, tighter text */
+.pull-left.guide-steps { width: 56%; }
+.pull-left.guide-steps + .pull-right { width: 36%; }
+.pull-left.guide-steps .step-body { flex: 1 1 auto; }
+.pull-left.guide-steps .step-body p { margin: 0; }
+.pull-left.guide-steps .cards.steps .card { font-size: 1em; }
+.pull-left.guide-steps .cards.steps .card > *:has(> .enum.dur) { flex: 0 0 3.4em; }
+.pull-left.guide-steps ul { margin: 0.4em 0 0; padding-left: 1.1em; }
+.pull-left.guide-steps li { margin: 0.25em 0; }

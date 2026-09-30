@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Federated Journal Club — INDoS WG3 Training School | 30 Sep 2026</title>
+  <meta charset="utf-8">
+  <meta name="grammarly" content="false">
+  <meta name="google" content="notranslate">
+  <link rel="icon" type="image/png" href="images/indos-mark.png" />
+  <link rel="stylesheet" type="text/css" href="../remark/vendor/asciinema-player/asciinema-player.css" />
+  <link rel="stylesheet" type="text/css" href="../remark/core/base.css" />
+  <link rel="stylesheet" type="text/css" href="indos.css" />
+  <link rel="stylesheet" href="../remark/ext/nav-controls.css" />
+</head>
+
+<body>
+<script src="../remark/vendor/asciinema-player/asciinema-player.min.js"></script>
+<script src="https://kit.fontawesome.com/015d4b01de.js" crossorigin="anonymous"></script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      processEscapes: true},
+      jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
+      extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js", "[Contrib]/a11y/accessibility-menu.js"],
+      TeX: {
+      extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"],
+      equationNumbers: {
+      autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<textarea id="source">
+name: cover
+layout: true
+class: indos-cover no-logo no-counter
+---
+count: false
+
+.indos-title[
+<img class="wordmark" src="images/indos-logo.png" alt="INDoS — Improving Neuroimaging Data for Sharing" />
+
+# Federated Journal Club
+
+## How to read and review a neuroimaging paper
+
+**Mélanie Garcia, PhD**
+
+.meta[WG3 Training School · Madrid and online · September 30, 2026]
+]
+
+---
+name: section
+layout: true
+class: indos-section no-logo no-counter
+
+---
+name: content
+layout: true
+
+.perma-sidebar[
+<p class="rotate">
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0; height: 20px; padding-top: 6px;" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+  <span style="padding-left: 10px; font-weight: 600;">INDoS WG3 Training School (Sep 30, 2026)</span>
+</p>
+]
+
+---
+class: vcenter
+
+# This afternoon
+
+.cards.steps.agenda[
+.card[
+.enum.dur[15′]
+
+**Theory:** how to read a paper
+]
+.card[
+.enum.dur[15′]
+
+**The web app:** presentation and registration
+]
+.card.break[
+.enum.dur[15′]
+
+Break
+]
+.card[
+.enum.dur[55′]
+
+**Individual reading** and critical annotation
+]
+.card[
+.enum.dur[20′]
+
+**Group discussion:** the paper section by section, comparing annotations
+]
+.card[
+.enum.dur[10′]
+
+**Group reports** and statistics
+]
+]
+
+---
+class: vcenter
+
+# About me
+
+.cards.cols-3.story[
+.card[
+.kicker[PhD · 2019–2023]
+### Deep learning and autism
+Brain sMRI and fMRI
+
+.gray-text[Trinity College Dublin, School of Medicine, Ireland]
+]
+.card[
+.kicker[Postdoc · 2023–2026]
+### Machine learning in psychiatry
+sMRI, fMRI, EEG and clinical data
+
+.gray-text[Massachusetts General Hospital, Harvard Medical School, USA]
+]
+.card[
+.kicker[Now]
+### Innovations Editor
+Aperture Neuro
+]
+]
+
+.boxed-content[
+.gray-text[Neuroimaging · machine learning · psychiatry]
+]
+
+???
+
+TODO: introduce yourself in a few sentences (~30 seconds).
+
+---
+class: no-logo
+
+<div class="statement huge-statement"><em>THE</em> method</div>
+
+???
+
+Are you ready?
+I am going to teach you THE method for reading any scientific paper.
+
+[pause]
+
+Actually, I am not.
+
+Having worked as a PhD candidate and postdoc in neuroimaging and psychiatry taught me the
+concept of neurodiversity, and made me realize how beautiful and diverse human minds are.
+
+---
+
+# Imagine an apple
+
+.pull-left.center[
+.apple[🍎]
+
+.figcap.invisible[Some of us *see* it]
+]
+
+.pull-right.center.invisible[
+<svg viewBox="0 0 420 260" width="100%" style="max-width:420px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An apple as a concept graph">
+  <g font-family="Montserrat, Urbanist, Helvetica, sans-serif" font-size="17" text-anchor="middle" font-weight="600">
+    <g stroke="#9aa6c2" stroke-width="2.5">
+      <line x1="210" y1="130" x2="80" y2="45"/><line x1="210" y1="130" x2="340" y2="45"/>
+      <line x1="210" y1="130" x2="70" y2="215"/><line x1="210" y1="130" x2="350" y2="215"/>
+    </g>
+    <circle cx="210" cy="130" r="42" fill="#102b62"/><text x="210" y="136" fill="#fff">apple</text>
+    <rect x="30" y="25" width="100" height="38" rx="19" fill="#fff" stroke="#be5eac" stroke-width="2.5"/><text x="80" y="50" fill="#102b62">fruit</text>
+    <rect x="290" y="25" width="100" height="38" rx="19" fill="#fff" stroke="#fab44c" stroke-width="2.5"/><text x="340" y="50" fill="#102b62">red</text>
+    <rect x="20" y="196" width="100" height="38" rx="19" fill="#fff" stroke="#60c0af" stroke-width="2.5"/><text x="70" y="221" fill="#102b62">round</text>
+    <rect x="300" y="196" width="100" height="38" rx="19" fill="#fff" stroke="#5d2890" stroke-width="2.5"/><text x="350" y="221" fill="#102b62">crunchy</text>
+  </g>
+</svg>
+
+.figcap[Some of us *know* it: as a concept, a graph, a diagram]
+]
+
+.slide-footer.invisible[
+.ref[*Aphantasia*: the inability to voluntarily form mental images.]
+]
+
+???
+
+For instance, have you heard of aphantasia? It's when you can't really form mental images.
+If someone asks you to imagine an apple, you know what an apple is, but you don't see it in
+your head.
+
+---
+count: false
+
+# Imagine an apple
+
+.pull-left.center[
+.apple[🍎]
+
+.figcap[Some of us *see* it]
+]
+
+.pull-right.center[
+<svg viewBox="0 0 420 260" width="100%" style="max-width:420px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="An apple as a concept graph">
+  <g font-family="Montserrat, Urbanist, Helvetica, sans-serif" font-size="17" text-anchor="middle" font-weight="600">
+    <g stroke="#9aa6c2" stroke-width="2.5">
+      <line x1="210" y1="130" x2="80" y2="45"/><line x1="210" y1="130" x2="340" y2="45"/>
+      <line x1="210" y1="130" x2="70" y2="215"/><line x1="210" y1="130" x2="350" y2="215"/>
+    </g>
+    <circle cx="210" cy="130" r="42" fill="#102b62"/><text x="210" y="136" fill="#fff">apple</text>
+    <rect x="30" y="25" width="100" height="38" rx="19" fill="#fff" stroke="#be5eac" stroke-width="2.5"/><text x="80" y="50" fill="#102b62">fruit</text>
+    <rect x="290" y="25" width="100" height="38" rx="19" fill="#fff" stroke="#fab44c" stroke-width="2.5"/><text x="340" y="50" fill="#102b62">red</text>
+    <rect x="20" y="196" width="100" height="38" rx="19" fill="#fff" stroke="#60c0af" stroke-width="2.5"/><text x="70" y="221" fill="#102b62">round</text>
+    <rect x="300" y="196" width="100" height="38" rx="19" fill="#fff" stroke="#5d2890" stroke-width="2.5"/><text x="350" y="221" fill="#102b62">crunchy</text>
+  </g>
+</svg>
+
+.figcap[Some of us *know* it: as a concept, a graph, a diagram]
+]
+
+.slide-footer[
+.ref[*Aphantasia*: the inability to voluntarily form mental images.]
+]
+
+???
+
+My husband is like that. He thinks more in concepts, like graphs or diagrams.
+
+---
+
+# Even one reader reads differently
+
+.boxed-content[
+<svg class="fedsvg" viewBox="0 0 980 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One reader reads the same paper four times, noticing different things each time">
+<g font-family="Montserrat, Urbanist, Helvetica, sans-serif" font-size="16" text-anchor="middle">
+<g transform="translate(32,150)" fill="#102b62"><circle cy="-10" r="8"/><path d="M-13 14 a13 13 0 0 1 26 0 z"/></g>
+<text x="32" y="192" fill="#102b62" font-weight="700" font-size="14">You</text>
+<rect x="70" y="95" width="120" height="110" rx="8" fill="#fff" stroke="#102b62" stroke-width="3"/>
+<g stroke="#9aa6c2" stroke-width="3"><line x1="88" y1="122" x2="172" y2="122"/><line x1="88" y1="142" x2="158" y2="142"/><line x1="88" y1="162" x2="172" y2="162"/><line x1="88" y1="182" x2="158" y2="182"/></g>
+<text x="130" y="232" fill="#102b62" font-weight="700">One paper</text>
+<g fill="none" stroke="#c3cadb" stroke-width="3"><path d="M190 150 C 270 150, 240 40, 320 40"/><path d="M190 150 C 270 150, 240 113, 320 113"/><path d="M190 150 C 270 150, 240 187, 320 187"/><path d="M190 150 C 270 150, 240 260, 320 260"/></g>
+<rect x="320" y="18" width="290" height="44" rx="22" fill="#102b62"/>
+<text x="465" y="46" fill="#fff" font-weight="600">1st read · the images</text>
+<rect x="320" y="91" width="290" height="44" rx="22" fill="#2c4a86"/>
+<text x="465" y="119" fill="#fff" font-weight="600">2nd read · the stats</text>
+<rect x="320" y="165" width="290" height="44" rx="22" fill="#4f6aa3"/>
+<text x="465" y="193" fill="#fff" font-weight="600">3rd read · the pipeline</text>
+<rect x="320" y="238" width="290" height="44" rx="22" fill="#7489b8"/>
+<text x="465" y="266" fill="#fff" font-weight="600">4th read · could I redo it?</text>
+<g fill="none" stroke="#c3cadb" stroke-width="3"><path d="M610 40 C 680 40, 710 150, 775 150"/><path d="M610 113 C 680 113, 710 150, 775 150"/><path d="M610 187 C 680 187, 710 150, 775 150"/><path d="M610 260 C 680 260, 710 150, 775 150"/></g>
+<rect x="775" y="85" width="185" height="130" rx="10" fill="#102b62"/>
+<text x="867" y="137" fill="#fff" font-weight="700" font-size="20">Your</text><text x="867" y="164" fill="#fff" font-weight="700" font-size="20">understanding</text>
+</g></svg>
+
+.center.larger[Each time you read the same paper, you notice something new.]
+]
+
+???
+
+DRAFT — adapt to your own words.
+
+Even on your own, you never read a paper the same way twice. The first time, your eye goes to the
+images; the next time, to the statistics; later, you follow the pipeline step by step, or wonder
+whether you could redo it.
+
+---
+
+# ...and we all read differently
+
+.boxed-content[
+<svg class="fedsvg" viewBox="0 0 980 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four different people read the same paper; their readings combine into one federated review">
+<g font-family="Montserrat, Urbanist, Helvetica, sans-serif" font-size="16" text-anchor="middle">
+<rect x="20" y="95" width="120" height="110" rx="8" fill="#fff" stroke="#102b62" stroke-width="3"/>
+<g stroke="#9aa6c2" stroke-width="3"><line x1="38" y1="122" x2="122" y2="122"/><line x1="38" y1="142" x2="108" y2="142"/><line x1="38" y1="162" x2="122" y2="162"/><line x1="38" y1="182" x2="108" y2="182"/></g>
+<text x="80" y="232" fill="#102b62" font-weight="700">One paper</text>
+<g fill="none" stroke="#c3cadb" stroke-width="3"><path d="M140 150 C 220 150, 205 40, 285 40"/><path d="M140 150 C 220 150, 205 113, 285 113"/><path d="M140 150 C 220 150, 205 187, 285 187"/><path d="M140 150 C 220 150, 205 260, 285 260"/></g>
+<g transform="translate(306,42)" fill="#be5eac"><circle cy="-10" r="8"/><path d="M-13 14 a13 13 0 0 1 26 0 z"/></g>
+<rect x="330" y="18" width="290" height="44" rx="22" fill="#be5eac"/>
+<text x="475" y="46" fill="#fff" font-weight="600">A visual thinker</text>
+<g transform="translate(306,115)" fill="#fab44c"><circle cy="-10" r="8"/><path d="M-13 14 a13 13 0 0 1 26 0 z"/></g>
+<rect x="330" y="91" width="290" height="44" rx="22" fill="#fab44c"/>
+<text x="475" y="119" fill="#102b62" font-weight="600">A conceptual thinker</text>
+<g transform="translate(306,189)" fill="#60c0af"><circle cy="-10" r="8"/><path d="M-13 14 a13 13 0 0 1 26 0 z"/></g>
+<rect x="330" y="165" width="290" height="44" rx="22" fill="#60c0af"/>
+<text x="475" y="193" fill="#102b62" font-weight="600">A statistician</text>
+<g transform="translate(306,262)" fill="#5d2890"><circle cy="-10" r="8"/><path d="M-13 14 a13 13 0 0 1 26 0 z"/></g>
+<rect x="330" y="238" width="290" height="44" rx="22" fill="#5d2890"/>
+<text x="475" y="266" fill="#fff" font-weight="600">A pipeline builder</text>
+<g fill="none" stroke="#c3cadb" stroke-width="3"><path d="M620 40 C 690 40, 710 150, 775 150"/><path d="M620 113 C 690 113, 710 150, 775 150"/><path d="M620 187 C 690 187, 710 150, 775 150"/><path d="M620 260 C 690 260, 710 150, 775 150"/></g>
+<rect x="775" y="85" width="185" height="130" rx="10" fill="#102b62"/>
+<rect x="775.0" y="197" width="46.25" height="18" fill="#be5eac"/><rect x="821.25" y="197" width="46.25" height="18" fill="#fab44c"/><rect x="867.5" y="197" width="46.25" height="18" fill="#60c0af"/><rect x="913.75" y="197" width="46.25" height="18" fill="#5d2890"/>
+<text x="867" y="137" fill="#fff" font-weight="700" font-size="20">Federated</text><text x="867" y="164" fill="#fff" font-weight="700" font-size="20">review</text>
+</g></svg>
+
+.center.larger[A **federated review** combines everyone's readings.]
+]
+
+???
+
+So no, we are not all built the same way, and that's great! It means we all read differently,
+with different perspectives and different biases. And comparing them is exciting: that's how we
+explore and learn.
+
+That's why the idea of our following activity will be to leverage this variety of views, with the
+aim of building federated reviews of articles: reviews built by combining everyone's readings.
+
+
+---
+
+# How to read a paper: your turn
+
+.pull-left.guide-steps[
+.cards.steps[
+.card[
+.enum.dur[10′]
+
+**Read the guide** from the Journal Club organizers.
+]
+.card[
+.enum.dur[5′]
+
+.step-body[
+**Discuss with your neighbour:**
+
+* What is your overall impression of the guide?
+* Which of the approaches seems most useful to you, and why?
+* How does it compare with the way you usually read papers?
+]
+]
+]
+]
+
+.pull-right.center[
+<svg class="qr" viewBox="-2 -2 37 37" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="QR code for https://www.indos-costaction.eu/journal-club/reading.html" shape-rendering="crispEdges"><rect x="-2" y="-2" width="37" height="37" fill="#fff"/><g fill="#102b62"><rect x="0" y="0" width="1" height="1"/><rect x="1" y="0" width="1" height="1"/><rect x="2" y="0" width="1" height="1"/><rect x="3" y="0" width="1" height="1"/><rect x="4" y="0" width="1" height="1"/><rect x="5" y="0" width="1" height="1"/><rect x="6" y="0" width="1" height="1"/><rect x="9" y="0" width="1" height="1"/><rect x="11" y="0" width="1" height="1"/><rect x="12" y="0" width="1" height="1"/><rect x="13" y="0" width="1" height="1"/><rect x="14" y="0" width="1" height="1"/><rect x="22" y="0" width="1" height="1"/><rect x="26" y="0" width="1" height="1"/><rect x="27" y="0" width="1" height="1"/><rect x="28" y="0" width="1" height="1"/><rect x="29" y="0" width="1" height="1"/><rect x="30" y="0" width="1" height="1"/><rect x="31" y="0" width="1" height="1"/><rect x="32" y="0" width="1" height="1"/><rect x="0" y="1" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="8" y="1" width="1" height="1"/><rect x="12" y="1" width="1" height="1"/><rect x="17" y="1" width="1" height="1"/><rect x="20" y="1" width="1" height="1"/><rect x="21" y="1" width="1" height="1"/><rect x="22" y="1" width="1" height="1"/><rect x="26" y="1" width="1" height="1"/><rect x="32" y="1" width="1" height="1"/><rect x="0" y="2" width="1" height="1"/><rect x="2" y="2" width="1" height="1"/><rect x="3" y="2" width="1" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="8" y="2" width="1" height="1"/><rect x="10" y="2" width="1" height="1"/><rect x="11" y="2" width="1" height="1"/><rect x="14" y="2" width="1" height="1"/><rect x="16" y="2" width="1" height="1"/><rect x="18" y="2" width="1" height="1"/><rect x="19" y="2" width="1" height="1"/><rect x="21" y="2" width="1" height="1"/><rect x="22" y="2" width="1" height="1"/><rect x="24" y="2" width="1" height="1"/><rect x="26" y="2" width="1" height="1"/><rect x="28" y="2" width="1" height="1"/><rect x="29" y="2" width="1" height="1"/><rect x="30" y="2" width="1" height="1"/><rect x="32" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="2" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="4" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="8" y="3" width="1" height="1"/><rect x="9" y="3" width="1" height="1"/><rect x="11" y="3" width="1" height="1"/><rect x="12" y="3" width="1" height="1"/><rect x="14" y="3" width="1" height="1"/><rect x="15" y="3" width="1" height="1"/><rect x="16" y="3" width="1" height="1"/><rect x="17" y="3" width="1" height="1"/><rect x="20" y="3" width="1" height="1"/><rect x="21" y="3" width="1" height="1"/><rect x="23" y="3" width="1" height="1"/><rect x="24" y="3" width="1" height="1"/><rect x="26" y="3" width="1" height="1"/><rect x="28" y="3" width="1" height="1"/><rect x="29" y="3" width="1" height="1"/><rect x="30" y="3" width="1" height="1"/><rect x="32" y="3" width="1" height="1"/><rect x="0" y="4" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="14" y="4" width="1" height="1"/><rect x="15" y="4" width="1" height="1"/><rect x="16" y="4" width="1" height="1"/><rect x="18" y="4" width="1" height="1"/><rect x="19" y="4" width="1" height="1"/><rect x="22" y="4" width="1" height="1"/><rect x="23" y="4" width="1" height="1"/><rect x="24" y="4" width="1" height="1"/><rect x="26" y="4" width="1" height="1"/><rect x="28" y="4" width="1" height="1"/><rect x="29" y="4" width="1" height="1"/><rect x="30" y="4" width="1" height="1"/><rect x="32" y="4" width="1" height="1"/><rect x="0" y="5" width="1" height="1"/><rect x="6" y="5" width="1" height="1"/><rect x="9" y="5" width="1" height="1"/><rect x="11" y="5" width="1" height="1"/><rect x="12" y="5" width="1" height="1"/><rect x="14" y="5" width="1" height="1"/><rect x="15" y="5" width="1" height="1"/><rect x="20" y="5" width="1" height="1"/><rect x="21" y="5" width="1" height="1"/><rect x="22" y="5" width="1" height="1"/><rect x="24" y="5" width="1" height="1"/><rect x="26" y="5" width="1" height="1"/><rect x="32" y="5" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/><rect x="1" y="6" width="1" height="1"/><rect x="2" y="6" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/><rect x="5" y="6" width="1" height="1"/><rect x="6" y="6" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="10" y="6" width="1" height="1"/><rect x="12" y="6" width="1" height="1"/><rect x="14" y="6" width="1" height="1"/><rect x="16" y="6" width="1" height="1"/><rect x="18" y="6" width="1" height="1"/><rect x="20" y="6" width="1" height="1"/><rect x="22" y="6" width="1" height="1"/><rect x="24" y="6" width="1" height="1"/><rect x="26" y="6" width="1" height="1"/><rect x="27" y="6" width="1" height="1"/><rect x="28" y="6" width="1" height="1"/><rect x="29" y="6" width="1" height="1"/><rect x="30" y="6" width="1" height="1"/><rect x="31" y="6" width="1" height="1"/><rect x="32" y="6" width="1" height="1"/><rect x="8" y="7" width="1" height="1"/><rect x="9" y="7" width="1" height="1"/><rect x="10" y="7" width="1" height="1"/><rect x="14" y="7" width="1" height="1"/><rect x="15" y="7" width="1" height="1"/><rect x="16" y="7" width="1" height="1"/><rect x="18" y="7" width="1" height="1"/><rect x="19" y="7" width="1" height="1"/><rect x="20" y="7" width="1" height="1"/><rect x="23" y="7" width="1" height="1"/><rect x="24" y="7" width="1" height="1"/><rect x="0" y="8" width="1" height="1"/><rect x="6" y="8" width="1" height="1"/><rect x="8" y="8" width="1" height="1"/><rect x="9" y="8" width="1" height="1"/><rect x="11" y="8" width="1" height="1"/><rect x="12" y="8" width="1" height="1"/><rect x="13" y="8" width="1" height="1"/><rect x="14" y="8" width="1" height="1"/><rect x="17" y="8" width="1" height="1"/><rect x="20" y="8" width="1" height="1"/><rect x="22" y="8" width="1" height="1"/><rect x="24" y="8" width="1" height="1"/><rect x="25" y="8" width="1" height="1"/><rect x="26" y="8" width="1" height="1"/><rect x="29" y="8" width="1" height="1"/><rect x="30" y="8" width="1" height="1"/><rect x="31" y="8" width="1" height="1"/><rect x="0" y="9" width="1" height="1"/><rect x="1" y="9" width="1" height="1"/><rect x="2" y="9" width="1" height="1"/><rect x="4" y="9" width="1" height="1"/><rect x="5" y="9" width="1" height="1"/><rect x="7" y="9" width="1" height="1"/><rect x="10" y="9" width="1" height="1"/><rect x="11" y="9" width="1" height="1"/><rect x="13" y="9" width="1" height="1"/><rect x="15" y="9" width="1" height="1"/><rect x="16" y="9" width="1" height="1"/><rect x="17" y="9" width="1" height="1"/><rect x="18" y="9" width="1" height="1"/><rect x="19" y="9" width="1" height="1"/><rect x="22" y="9" width="1" height="1"/><rect x="23" y="9" width="1" height="1"/><rect x="28" y="9" width="1" height="1"/><rect x="29" y="9" width="1" height="1"/><rect x="30" y="9" width="1" height="1"/><rect x="0" y="10" width="1" height="1"/><rect x="4" y="10" width="1" height="1"/><rect x="5" y="10" width="1" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="8" y="10" width="1" height="1"/><rect x="12" y="10" width="1" height="1"/><rect x="13" y="10" width="1" height="1"/><rect x="14" y="10" width="1" height="1"/><rect x="15" y="10" width="1" height="1"/><rect x="18" y="10" width="1" height="1"/><rect x="20" y="10" width="1" height="1"/><rect x="24" y="10" width="1" height="1"/><rect x="25" y="10" width="1" height="1"/><rect x="26" y="10" width="1" height="1"/><rect x="28" y="10" width="1" height="1"/><rect x="30" y="10" width="1" height="1"/><rect x="31" y="10" width="1" height="1"/><rect x="1" y="11" width="1" height="1"/><rect x="3" y="11" width="1" height="1"/><rect x="4" y="11" width="1" height="1"/><rect x="9" y="11" width="1" height="1"/><rect x="13" y="11" width="1" height="1"/><rect x="15" y="11" width="1" height="1"/><rect x="16" y="11" width="1" height="1"/><rect x="18" y="11" width="1" height="1"/><rect x="19" y="11" width="1" height="1"/><rect x="20" y="11" width="1" height="1"/><rect x="23" y="11" width="1" height="1"/><rect x="27" y="11" width="1" height="1"/><rect x="28" y="11" width="1" height="1"/><rect x="29" y="11" width="1" height="1"/><rect x="30" y="11" width="1" height="1"/><rect x="32" y="11" width="1" height="1"/><rect x="1" y="12" width="1" height="1"/><rect x="3" y="12" width="1" height="1"/><rect x="6" y="12" width="1" height="1"/><rect x="8" y="12" width="1" height="1"/><rect x="10" y="12" width="1" height="1"/><rect x="11" y="12" width="1" height="1"/><rect x="13" y="12" width="1" height="1"/><rect x="20" y="12" width="1" height="1"/><rect x="24" y="12" width="1" height="1"/><rect x="25" y="12" width="1" height="1"/><rect x="26" y="12" width="1" height="1"/><rect x="27" y="12" width="1" height="1"/><rect x="31" y="12" width="1" height="1"/><rect x="0" y="13" width="1" height="1"/><rect x="1" y="13" width="1" height="1"/><rect x="2" y="13" width="1" height="1"/><rect x="4" y="13" width="1" height="1"/><rect x="19" y="13" width="1" height="1"/><rect x="20" y="13" width="1" height="1"/><rect x="23" y="13" width="1" height="1"/><rect x="26" y="13" width="1" height="1"/><rect x="27" y="13" width="1" height="1"/><rect x="29" y="13" width="1" height="1"/><rect x="31" y="13" width="1" height="1"/><rect x="32" y="13" width="1" height="1"/><rect x="1" y="14" width="1" height="1"/><rect x="3" y="14" width="1" height="1"/><rect x="4" y="14" width="1" height="1"/><rect x="5" y="14" width="1" height="1"/><rect x="6" y="14" width="1" height="1"/><rect x="8" y="14" width="1" height="1"/><rect x="10" y="14" width="1" height="1"/><rect x="11" y="14" width="1" height="1"/><rect x="13" y="14" width="1" height="1"/><rect x="15" y="14" width="1" height="1"/><rect x="16" y="14" width="1" height="1"/><rect x="18" y="14" width="1" height="1"/><rect x="21" y="14" width="1" height="1"/><rect x="22" y="14" width="1" height="1"/><rect x="25" y="14" width="1" height="1"/><rect x="26" y="14" width="1" height="1"/><rect x="29" y="14" width="1" height="1"/><rect x="31" y="14" width="1" height="1"/><rect x="0" y="15" width="1" height="1"/><rect x="1" y="15" width="1" height="1"/><rect x="2" y="15" width="1" height="1"/><rect x="4" y="15" width="1" height="1"/><rect x="5" y="15" width="1" height="1"/><rect x="8" y="15" width="1" height="1"/><rect x="10" y="15" width="1" height="1"/><rect x="11" y="15" width="1" height="1"/><rect x="13" y="15" width="1" height="1"/><rect x="16" y="15" width="1" height="1"/><rect x="19" y="15" width="1" height="1"/><rect x="22" y="15" width="1" height="1"/><rect x="25" y="15" width="1" height="1"/><rect x="28" y="15" width="1" height="1"/><rect x="29" y="15" width="1" height="1"/><rect x="30" y="15" width="1" height="1"/><rect x="32" y="15" width="1" height="1"/><rect x="0" y="16" width="1" height="1"/><rect x="3" y="16" width="1" height="1"/><rect x="4" y="16" width="1" height="1"/><rect x="6" y="16" width="1" height="1"/><rect x="7" y="16" width="1" height="1"/><rect x="8" y="16" width="1" height="1"/><rect x="9" y="16" width="1" height="1"/><rect x="11" y="16" width="1" height="1"/><rect x="12" y="16" width="1" height="1"/><rect x="14" y="16" width="1" height="1"/><rect x="15" y="16" width="1" height="1"/><rect x="17" y="16" width="1" height="1"/><rect x="19" y="16" width="1" height="1"/><rect x="22" y="16" width="1" height="1"/><rect x="24" y="16" width="1" height="1"/><rect x="25" y="16" width="1" height="1"/><rect x="27" y="16" width="1" height="1"/><rect x="28" y="16" width="1" height="1"/><rect x="29" y="16" width="1" height="1"/><rect x="32" y="16" width="1" height="1"/><rect x="1" y="17" width="1" height="1"/><rect x="2" y="17" width="1" height="1"/><rect x="4" y="17" width="1" height="1"/><rect x="7" y="17" width="1" height="1"/><rect x="11" y="17" width="1" height="1"/><rect x="13" y="17" width="1" height="1"/><rect x="15" y="17" width="1" height="1"/><rect x="16" y="17" width="1" height="1"/><rect x="18" y="17" width="1" height="1"/><rect x="19" y="17" width="1" height="1"/><rect x="20" y="17" width="1" height="1"/><rect x="23" y="17" width="1" height="1"/><rect x="24" y="17" width="1" height="1"/><rect x="25" y="17" width="1" height="1"/><rect x="26" y="17" width="1" height="1"/><rect x="29" y="17" width="1" height="1"/><rect x="30" y="17" width="1" height="1"/><rect x="32" y="17" width="1" height="1"/><rect x="0" y="18" width="1" height="1"/><rect x="2" y="18" width="1" height="1"/><rect x="4" y="18" width="1" height="1"/><rect x="5" y="18" width="1" height="1"/><rect x="6" y="18" width="1" height="1"/><rect x="7" y="18" width="1" height="1"/><rect x="8" y="18" width="1" height="1"/><rect x="10" y="18" width="1" height="1"/><rect x="11" y="18" width="1" height="1"/><rect x="14" y="18" width="1" height="1"/><rect x="15" y="18" width="1" height="1"/><rect x="17" y="18" width="1" height="1"/><rect x="19" y="18" width="1" height="1"/><rect x="21" y="18" width="1" height="1"/><rect x="23" y="18" width="1" height="1"/><rect x="27" y="18" width="1" height="1"/><rect x="29" y="18" width="1" height="1"/><rect x="30" y="18" width="1" height="1"/><rect x="32" y="18" width="1" height="1"/><rect x="2" y="19" width="1" height="1"/><rect x="3" y="19" width="1" height="1"/><rect x="5" y="19" width="1" height="1"/><rect x="7" y="19" width="1" height="1"/><rect x="9" y="19" width="1" height="1"/><rect x="10" y="19" width="1" height="1"/><rect x="12" y="19" width="1" height="1"/><rect x="15" y="19" width="1" height="1"/><rect x="16" y="19" width="1" height="1"/><rect x="18" y="19" width="1" height="1"/><rect x="19" y="19" width="1" height="1"/><rect x="22" y="19" width="1" height="1"/><rect x="23" y="19" width="1" height="1"/><rect x="25" y="19" width="1" height="1"/><rect x="28" y="19" width="1" height="1"/><rect x="29" y="19" width="1" height="1"/><rect x="30" y="19" width="1" height="1"/><rect x="31" y="19" width="1" height="1"/><rect x="32" y="19" width="1" height="1"/><rect x="4" y="20" width="1" height="1"/><rect x="6" y="20" width="1" height="1"/><rect x="8" y="20" width="1" height="1"/><rect x="9" y="20" width="1" height="1"/><rect x="10" y="20" width="1" height="1"/><rect x="14" y="20" width="1" height="1"/><rect x="17" y="20" width="1" height="1"/><rect x="22" y="20" width="1" height="1"/><rect x="25" y="20" width="1" height="1"/><rect x="27" y="20" width="1" height="1"/><rect x="28" y="20" width="1" height="1"/><rect x="29" y="20" width="1" height="1"/><rect x="31" y="20" width="1" height="1"/><rect x="32" y="20" width="1" height="1"/><rect x="0" y="21" width="1" height="1"/><rect x="2" y="21" width="1" height="1"/><rect x="3" y="21" width="1" height="1"/><rect x="8" y="21" width="1" height="1"/><rect x="9" y="21" width="1" height="1"/><rect x="13" y="21" width="1" height="1"/><rect x="14" y="21" width="1" height="1"/><rect x="18" y="21" width="1" height="1"/><rect x="19" y="21" width="1" height="1"/><rect x="21" y="21" width="1" height="1"/><rect x="22" y="21" width="1" height="1"/><rect x="23" y="21" width="1" height="1"/><rect x="27" y="21" width="1" height="1"/><rect x="28" y="21" width="1" height="1"/><rect x="29" y="21" width="1" height="1"/><rect x="30" y="21" width="1" height="1"/><rect x="0" y="22" width="1" height="1"/><rect x="2" y="22" width="1" height="1"/><rect x="4" y="22" width="1" height="1"/><rect x="6" y="22" width="1" height="1"/><rect x="8" y="22" width="1" height="1"/><rect x="10" y="22" width="1" height="1"/><rect x="11" y="22" width="1" height="1"/><rect x="12" y="22" width="1" height="1"/><rect x="13" y="22" width="1" height="1"/><rect x="17" y="22" width="1" height="1"/><rect x="18" y="22" width="1" height="1"/><rect x="20" y="22" width="1" height="1"/><rect x="22" y="22" width="1" height="1"/><rect x="24" y="22" width="1" height="1"/><rect x="25" y="22" width="1" height="1"/><rect x="27" y="22" width="1" height="1"/><rect x="28" y="22" width="1" height="1"/><rect x="29" y="22" width="1" height="1"/><rect x="30" y="22" width="1" height="1"/><rect x="31" y="22" width="1" height="1"/><rect x="0" y="23" width="1" height="1"/><rect x="2" y="23" width="1" height="1"/><rect x="4" y="23" width="1" height="1"/><rect x="7" y="23" width="1" height="1"/><rect x="10" y="23" width="1" height="1"/><rect x="12" y="23" width="1" height="1"/><rect x="13" y="23" width="1" height="1"/><rect x="14" y="23" width="1" height="1"/><rect x="15" y="23" width="1" height="1"/><rect x="16" y="23" width="1" height="1"/><rect x="22" y="23" width="1" height="1"/><rect x="25" y="23" width="1" height="1"/><rect x="26" y="23" width="1" height="1"/><rect x="27" y="23" width="1" height="1"/><rect x="28" y="23" width="1" height="1"/><rect x="29" y="23" width="1" height="1"/><rect x="30" y="23" width="1" height="1"/><rect x="31" y="23" width="1" height="1"/><rect x="0" y="24" width="1" height="1"/><rect x="1" y="24" width="1" height="1"/><rect x="3" y="24" width="1" height="1"/><rect x="6" y="24" width="1" height="1"/><rect x="8" y="24" width="1" height="1"/><rect x="10" y="24" width="1" height="1"/><rect x="11" y="24" width="1" height="1"/><rect x="13" y="24" width="1" height="1"/><rect x="16" y="24" width="1" height="1"/><rect x="20" y="24" width="1" height="1"/><rect x="24" y="24" width="1" height="1"/><rect x="25" y="24" width="1" height="1"/><rect x="26" y="24" width="1" height="1"/><rect x="27" y="24" width="1" height="1"/><rect x="28" y="24" width="1" height="1"/><rect x="31" y="24" width="1" height="1"/><rect x="8" y="25" width="1" height="1"/><rect x="11" y="25" width="1" height="1"/><rect x="14" y="25" width="1" height="1"/><rect x="15" y="25" width="1" height="1"/><rect x="16" y="25" width="1" height="1"/><rect x="17" y="25" width="1" height="1"/><rect x="19" y="25" width="1" height="1"/><rect x="20" y="25" width="1" height="1"/><rect x="22" y="25" width="1" height="1"/><rect x="23" y="25" width="1" height="1"/><rect x="24" y="25" width="1" height="1"/><rect x="28" y="25" width="1" height="1"/><rect x="30" y="25" width="1" height="1"/><rect x="32" y="25" width="1" height="1"/><rect x="0" y="26" width="1" height="1"/><rect x="1" y="26" width="1" height="1"/><rect x="2" y="26" width="1" height="1"/><rect x="3" y="26" width="1" height="1"/><rect x="4" y="26" width="1" height="1"/><rect x="5" y="26" width="1" height="1"/><rect x="6" y="26" width="1" height="1"/><rect x="9" y="26" width="1" height="1"/><rect x="10" y="26" width="1" height="1"/><rect x="13" y="26" width="1" height="1"/><rect x="15" y="26" width="1" height="1"/><rect x="16" y="26" width="1" height="1"/><rect x="20" y="26" width="1" height="1"/><rect x="21" y="26" width="1" height="1"/><rect x="23" y="26" width="1" height="1"/><rect x="24" y="26" width="1" height="1"/><rect x="26" y="26" width="1" height="1"/><rect x="28" y="26" width="1" height="1"/><rect x="30" y="26" width="1" height="1"/><rect x="0" y="27" width="1" height="1"/><rect x="6" y="27" width="1" height="1"/><rect x="11" y="27" width="1" height="1"/><rect x="12" y="27" width="1" height="1"/><rect x="16" y="27" width="1" height="1"/><rect x="23" y="27" width="1" height="1"/><rect x="24" y="27" width="1" height="1"/><rect x="28" y="27" width="1" height="1"/><rect x="29" y="27" width="1" height="1"/><rect x="30" y="27" width="1" height="1"/><rect x="31" y="27" width="1" height="1"/><rect x="32" y="27" width="1" height="1"/><rect x="0" y="28" width="1" height="1"/><rect x="2" y="28" width="1" height="1"/><rect x="3" y="28" width="1" height="1"/><rect x="4" y="28" width="1" height="1"/><rect x="6" y="28" width="1" height="1"/><rect x="10" y="28" width="1" height="1"/><rect x="12" y="28" width="1" height="1"/><rect x="13" y="28" width="1" height="1"/><rect x="14" y="28" width="1" height="1"/><rect x="17" y="28" width="1" height="1"/><rect x="19" y="28" width="1" height="1"/><rect x="22" y="28" width="1" height="1"/><rect x="24" y="28" width="1" height="1"/><rect x="25" y="28" width="1" height="1"/><rect x="26" y="28" width="1" height="1"/><rect x="27" y="28" width="1" height="1"/><rect x="28" y="28" width="1" height="1"/><rect x="29" y="28" width="1" height="1"/><rect x="31" y="28" width="1" height="1"/><rect x="0" y="29" width="1" height="1"/><rect x="2" y="29" width="1" height="1"/><rect x="3" y="29" width="1" height="1"/><rect x="4" y="29" width="1" height="1"/><rect x="6" y="29" width="1" height="1"/><rect x="9" y="29" width="1" height="1"/><rect x="10" y="29" width="1" height="1"/><rect x="11" y="29" width="1" height="1"/><rect x="18" y="29" width="1" height="1"/><rect x="19" y="29" width="1" height="1"/><rect x="20" y="29" width="1" height="1"/><rect x="23" y="29" width="1" height="1"/><rect x="25" y="29" width="1" height="1"/><rect x="27" y="29" width="1" height="1"/><rect x="28" y="29" width="1" height="1"/><rect x="30" y="29" width="1" height="1"/><rect x="31" y="29" width="1" height="1"/><rect x="32" y="29" width="1" height="1"/><rect x="0" y="30" width="1" height="1"/><rect x="2" y="30" width="1" height="1"/><rect x="3" y="30" width="1" height="1"/><rect x="4" y="30" width="1" height="1"/><rect x="6" y="30" width="1" height="1"/><rect x="9" y="30" width="1" height="1"/><rect x="10" y="30" width="1" height="1"/><rect x="12" y="30" width="1" height="1"/><rect x="13" y="30" width="1" height="1"/><rect x="14" y="30" width="1" height="1"/><rect x="15" y="30" width="1" height="1"/><rect x="16" y="30" width="1" height="1"/><rect x="17" y="30" width="1" height="1"/><rect x="19" y="30" width="1" height="1"/><rect x="20" y="30" width="1" height="1"/><rect x="22" y="30" width="1" height="1"/><rect x="24" y="30" width="1" height="1"/><rect x="27" y="30" width="1" height="1"/><rect x="28" y="30" width="1" height="1"/><rect x="29" y="30" width="1" height="1"/><rect x="31" y="30" width="1" height="1"/><rect x="32" y="30" width="1" height="1"/><rect x="0" y="31" width="1" height="1"/><rect x="6" y="31" width="1" height="1"/><rect x="10" y="31" width="1" height="1"/><rect x="11" y="31" width="1" height="1"/><rect x="12" y="31" width="1" height="1"/><rect x="14" y="31" width="1" height="1"/><rect x="16" y="31" width="1" height="1"/><rect x="18" y="31" width="1" height="1"/><rect x="20" y="31" width="1" height="1"/><rect x="22" y="31" width="1" height="1"/><rect x="27" y="31" width="1" height="1"/><rect x="28" y="31" width="1" height="1"/><rect x="29" y="31" width="1" height="1"/><rect x="30" y="31" width="1" height="1"/><rect x="0" y="32" width="1" height="1"/><rect x="1" y="32" width="1" height="1"/><rect x="2" y="32" width="1" height="1"/><rect x="3" y="32" width="1" height="1"/><rect x="4" y="32" width="1" height="1"/><rect x="5" y="32" width="1" height="1"/><rect x="6" y="32" width="1" height="1"/><rect x="8" y="32" width="1" height="1"/><rect x="9" y="32" width="1" height="1"/><rect x="11" y="32" width="1" height="1"/><rect x="13" y="32" width="1" height="1"/><rect x="17" y="32" width="1" height="1"/><rect x="23" y="32" width="1" height="1"/><rect x="24" y="32" width="1" height="1"/><rect x="25" y="32" width="1" height="1"/><rect x="26" y="32" width="1" height="1"/><rect x="27" y="32" width="1" height="1"/><rect x="31" y="32" width="1" height="1"/></g></svg>
+
+.qr-link[[indos-costaction.eu/journal-club/reading.html](https://www.indos-costaction.eu/journal-club/reading.html)]
+]
+
+???
+
+DRAFT — adapt to your own words.
+
+If you feel a bit lost or unsure how to approach a paper, don't worry. The organizers wrote a
+short guide on how to read a paper: scan the QR code or open the link. Take ten minutes to read
+it. Then turn to your neighbour, or pair up in the chat if you're online, and talk for five
+minutes: what is your overall impression of the guide, which of the approaches seems most useful
+to you and why, and how does it compare with the way you usually read papers? If one of the methods resonates with you, today is a good opportunity to try it out.
+
+---
+exclude: true
+
+# Three ways in
+
+.cards.cols-3[
+.card[
+### Read in passes
+Triage first: title, abstract, figures, conclusions. Then read properly. Then read as if you
+had to re-run the study.
+]
+.card[
+### Read methods as a pipeline
+For each step: what it does, what it assumes, which parameters were chosen or left at default.
+]
+.card[
+### Question the figures
+What is plotted, with what sample size? Does it support the claim in the text, or a weaker one?
+]
+]
+
+.boxed-content[
+<br />
+If Methods and Results feel hard: that's normal. Reading papers is a skill that grows with practice.
+
+More in the Journal Club guide:
+[indos-costaction.eu/journal-club/reading.html](https://www.indos-costaction.eu/journal-club/reading.html)
+]
+
+.slide-footer[
+.ref[Keshav (2007) [doi:10.1145/1273445.1273458](https://doi.org/10.1145/1273445.1273458) · Hoskins et al. (2007) [doi:10.1534/genetics.107.071183](https://doi.org/10.1534/genetics.107.071183) · Hubbard & Dunbar (2017) [doi:10.1371/journal.pone.0189753](https://doi.org/10.1371/journal.pone.0189753)]
+]
+
+???
+
+BACKUP SLIDE: hidden with `exclude: true`. Delete that line to show it again.
+
+
+DRAFT — adapt to your own words. About 3 minutes.
+
+Three approaches from the Journal Club's guide, written by the organizers. Take whichever speaks
+to you.
+
+First, read in passes rather than top to bottom. Srinivasan Keshav's three-pass method: a quick
+triage (title, abstract, figures, conclusions), then a proper read where you note what you don't
+understand, then a last pass where you imagine re-running the study yourself.
+
+Second, since most papers in the pool are about preprocessing, read the methods like a pipeline:
+for each step, what it does, what it assumes, and which parameters were chosen deliberately
+versus left at default.
+
+Third, question the figures, which is the idea behind the CREATE method: what is actually
+plotted, with how many subjects, and does it support the claim in the text, or only a weaker
+version of it?
+
+And if you find Methods and Results the hardest part: a survey of 260 students and researchers
+found exactly that for less experienced readers. It is a skill that grows with practice, which is
+what today is for. The full guide is at the link.
+
+---
+template: section
+
+.section-mark[
+<img src="images/indos-mark.png" alt="" />
+
+# The activity
+
+How the Federated Journal Club works, and what we do in the next two hours
+]
+
+
+???
+
+Let's see in more detail how the activity will go.
+
+---
+
+# Four questions for today
+
+.boxed-content.larger[
+No single right way to read a paper, but the same four questions, so we can compare our readings.
+]
+
+.cards.cols-2.questions[
+.card.q1[
+### What is claimed?
+]
+.card.q2.hide[
+### What evidence supports it?
+]
+.card.q3.hide[
+### What is missing or unclear?
+]
+.card.q4.hide[
+### Could I reproduce it?
+]
+]
+
+???
+
+By now you've probably understood that there is no single right way to read a paper.
+
+But for today's activity, I would like you to answer a set of questions to guide all of us during
+our time practicing reviewing. When reading and annotating the paper, please try to find answers
+to these four questions:
+---
+count: false
+
+# Four questions for today
+
+.boxed-content.larger[
+No single right way to read a paper, but the same four questions, so we can compare our readings.
+]
+
+.cards.cols-2.questions[
+.card.q1[
+### What is claimed?
+]
+.card.q2[
+### What evidence supports it?
+]
+.card.q3.hide[
+### What is missing or unclear?
+]
+.card.q4.hide[
+### Could I reproduce it?
+]
+]
+---
+count: false
+
+# Four questions for today
+
+.boxed-content.larger[
+No single right way to read a paper, but the same four questions, so we can compare our readings.
+]
+
+.cards.cols-2.questions[
+.card.q1[
+### What is claimed?
+]
+.card.q2[
+### What evidence supports it?
+]
+.card.q3[
+### What is missing or unclear?
+]
+.card.q4.hide[
+### Could I reproduce it?
+]
+]
+---
+count: false
+
+# Four questions for today
+
+.boxed-content.larger[
+No single right way to read a paper, but the same four questions, so we can compare our readings.
+]
+
+.cards.cols-2.questions[
+.card.q1[
+### What is claimed?
+]
+.card.q2[
+### What evidence supports it?
+]
+.card.q3[
+### What is missing or unclear?
+]
+.card.q4[
+### Could I reproduce it?
+]
+]
+
+???
+
+Sharing this framework will enable us to compare annotations across individuals and groups more
+easily.
+
+Now, the tool we'll use for the activity.
+
+---
+
+# The web app: newgaze
+
+.cards.steps.webapp[
+.card[
+.enum[1]
+
+Go to **[newgaze.com](https://newgaze.com)**
+]
+.card[
+.enum[2]
+
+Enter the access code: **[CODE]**
+]
+]
+
+???
+
+TODO: replace [CODE] with the preview access code. Live demo.
+
+---
+
+# 55′ · Individual reading and annotation
+
+.pull-left.larger[
+1. Answer the **self-assessment questions**.
+2. Open the **paper assigned to you**.
+   You may read more if you have time after this one.
+3. Annotate with the **four questions** in mind, and leave one longer comment at the end:
+   your overall take.
+
+.gray-text[Stuck? Raise your hand, or write in the chat if you are online.]
+]
+
+.pull-right[
+.cards.cols-1.review[
+.card[
+**Anchor each comment** to the exact passage, step or figure it is about.
+]
+.card[
+**Cover the whole paper**: Methods and Results too, not just the introduction.
+]
+.card[
+**Say what you didn't understand.** A precise "I don't get why…" is one of the most useful comments.
+]
+]
+
+.admonition.warning[
+<i class="fa-solid fa-ban"></i> **No AI.** Read and annotate the paper yourself.
+]
+]
+
+???
+
+DRAFT — adapt to your own words.
+
+You now have 55 minutes on your own. In newgaze, first answer the self-assessment questions,
+then open the paper assigned to you. If you finish early, you may read another one.
+
+A few tips for good annotations: attach each comment to the exact passage it is about; cover the
+whole paper, not just the introduction; and don't hesitate to say what you didn't understand. A
+precise "I don't get why…" is one of the most useful comments you can leave. And please, no AI:
+the point is your own reading.
+
+TODO: check the no-AI rule still applies with newgaze.
+
+---
+class: vcenter
+
+# 20′ · Group discussion
+
+.boxed-content.larger[
+In groups, go through the paper **section by section** and compare annotations.
+
+* The **least experienced** person speaks first about their annotations.
+* Where did you notice the same thing? Where did you disagree, and why?
+* What did one person catch that the others missed?
+
+The least experienced person also **reports the group's outcomes**.
+]
+
+???
+
+TODO: say how groups are formed (same paper? same modality?).
+
+Why the least experienced person first: once a senior person has spoken, others tend to align
+with them. Starting with the least experienced keeps every reading on the table, and reporting
+back gives them the floor.
+
+---
+
+# 10′ · Group reports and statistics
+
+.boxed-content.larger[
+Each group, about two minutes:
+]
+
+.cards.cols-2.questions[
+.card.q1[
+### Claim: in one sentence
+]
+.card.q2[
+### Evidence: the strongest piece
+]
+.card.q3[
+### Missing: the biggest gap
+]
+.card.q4[
+### Reproducible? Yes, partly or no
+]
+]
+
+???
+
+TODO: describe which statistics you will show.
+
+---
+template: section
+
+.section-mark[
+<img src="images/indos-mark.png" alt="" />
+
+# Thank you
+
+Questions? · [indos-costaction.eu/journal-club](https://www.indos-costaction.eu/journal-club/)
+
+.fine[This presentation is based upon work from COST Action CA24161 “Improving Neuroimaging Data for Sharing” (INDoS), supported by COST (European Cooperation in Science and Technology), [www.cost.eu](https://www.cost.eu).]
+]
+
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script src="../remark/core/engine.js"></script>
+    <script src="../remark/ext/asciicasts.js"></script>
+    <script src="../remark/ext/nav-controls.js"></script>
+  </body>
+</html>
