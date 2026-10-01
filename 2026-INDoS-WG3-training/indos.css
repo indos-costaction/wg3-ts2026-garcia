@@ -238,3 +238,20 @@ svg.qr { width: 62%; max-width: 280px; display: block; margin: 0.4em auto 0.8em;
 .pull-left.guide-steps .cards.steps .card > *:has(> .enum.dur) { flex: 0 0 3.4em; }
 .pull-left.guide-steps ul { margin: 0.4em 0 0; padding-left: 1.1em; }
 .pull-left.guide-steps li { margin: 0.25em 0; }
+
+/* Federated Journal Club outcomes */
+.cards.stats { margin-top: 0.6em; }
+.cards.stats .card { padding: 0.4em 0.9em; color: #444; font-size: 0.9em; }
+.cards.stats .card p { margin: 0; }
+.cards.stats .num { font-family: "Montserrat", "Urbanist", Helvetica, sans-serif; font-weight: 700;
+  font-size: 2.3em; line-height: 1.05; color: var(--indos-navy); }
+img.fjc-fig { display: block; width: 96%; margin: 0.5em 0 0; }
+img.fjc-fig.tall { width: auto; max-width: 100%; max-height: 575px; margin-top: -0.4em; }
+.pull-left.fjc-left { width: 70%; }
+.pull-left.fjc-left + .pull-right.fjc-right { width: 27%; font-size: 0.9em; }
+.fine-dark { font-size: 0.65em; color: #777; margin-top: 0.3em; }
+
+/* Full-width figure aligned with the text and cards above it */
+.remark-slide-content div.fjc-wide { float: left; width: 89%; margin: 0.5em 0 0; padding: 0; }
+.remark-slide-content div.fjc-wide img { display: block; width: 100%; max-width: 100%; margin: 0; }
+.cards.stats { margin-top: 1.6em; }
