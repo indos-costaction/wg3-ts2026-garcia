@@ -1,0 +1,47 @@
+{
+  "upload_type": "lesson",
+  "title": "INDoS WG3 Training School 2026: reproducible environments and critical reading materials",
+  "description": "<p>Teaching materials on how to read and review a neuroimaging paper and on the Federated Journal Club, prepared for the Training School of Working Group 3 of the INDoS COST Action (CA24161), Madrid, 30 September to 2 October 2026.</p><p>The slides are served at <a href=\"https://www.indos-costaction.eu/wg3-ts2026-garcia/\">www.indos-costaction.eu/wg3-ts2026-garcia</a>. They run on <a href=\"https://github.com/oesteban/remark-engine\">remark-engine</a>, included in the repository as a git submodule and therefore not part of this archive: clone the repository with <code>git clone --recurse-submodules</code> to run them locally.</p>",
+  "creators": [
+    {
+      "name": "Garcia, Mélanie",
+      "affiliation": "Massachusetts General Hospital, Harvard Medical School, Boston, USA",
+      "orcid": "0000-0003-2263-1375"
+    }
+  ],
+  "license": "cc-by-4.0",
+  "language": "eng",
+  "keywords": [
+    "neuroimaging",
+    "reproducibility",
+    "peer review",
+    "critical reading",
+    "Journal Club",
+    "training materials",
+    "INDoS",
+    "COST Action CA24161"
+  ],
+  "notes": "This publication is based upon work from COST Action CA24161 (INDoS), supported by COST (European Cooperation in Science and Technology).",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/indos-costaction/wg3-ts2026-garcia",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://www.indos-costaction.eu/wg3-ts2026-garcia/",
+      "relation": "isVariantFormOf",
+      "resource_type": "presentation"
+    },
+    {
+      "identifier": "https://www.indos-costaction.eu/wg3-ts2026",
+      "relation": "isPartOf",
+      "resource_type": "event"
+    },
+    {
+      "identifier": "https://github.com/oesteban/remark-engine",
+      "relation": "requires",
+      "resource_type": "software"
+    }
+  ]
+}
