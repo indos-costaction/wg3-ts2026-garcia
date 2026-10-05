@@ -1,5 +1,7 @@
 # INDoS WG3 Training School 2026 — environments and reading the literature
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23164546.svg)](https://doi.org/10.5281/zenodo.23164546)
+
 Materials for **Block 2** (environment bring-up and containers, how to read and
 review a neuroimaging paper, Journal Club), Wednesday 30 September.
 
