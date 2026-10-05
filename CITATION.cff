@@ -12,6 +12,11 @@ authors:
     given-names: "Mélanie"
     affiliation: "Massachusetts General Hospital, Harvard Medical School, Boston, USA"
     orcid: "https://orcid.org/0000-0003-2263-1375"
+doi: 10.5281/zenodo.23164546
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23164546
+    description: "Concept DOI: all versions, resolves to the latest release."
 license: CC-BY-4.0
 repository-code: "https://github.com/indos-costaction/wg3-ts2026-garcia"
 url: "https://www.indos-costaction.eu/training"
